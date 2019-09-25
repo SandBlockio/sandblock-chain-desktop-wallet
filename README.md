@@ -1,19 +1,16 @@
-# Electron webview
+#### Sandblock Chain Desktop Wallet
 
-This is a simple Electron application to create a webview.
+------------
 
-Features:
+👋 Welcome to the official Sandblock Chain Explorer repository!
 
-- Responsive window
-- Remember the window dimensions when reopening
-- Menu & keyboard shortcuts for MacOs
-- No title bar
-- Home button
-- Print function
-- MacOS, Windows and Linux executable with an app icon
-- DMG installer for Mac
+⚠️ This is beta software. Some features may not work as intended at the very beginning.
 
-![Electron webview](screenshot.png)
+🤓 All contributions are more than welcome! Feel free to fork the repository and create a Pull Request!
+
+------------
+
+##### Project Description
 
 This Electron webview application needs just these files:
 
