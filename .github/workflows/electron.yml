@@ -36,6 +36,7 @@ jobs:
         action: unpublished
         release_id: 0.1.1
         release-repo: SandBlockio/sandblock-chain-desktop-wallet
+        repo-token: ${{ secrets.github_token_release }}
 
   build_on_win:
     runs-on: windows-2016
