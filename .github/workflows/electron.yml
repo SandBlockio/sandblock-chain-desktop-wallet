@@ -28,7 +28,7 @@ jobs:
         APP_VERSION_NUMBER: 0.5.9
       run: npm run package-mac
     - name: see directory after building
-      run: ls
+      run: ls && ls builds
     - uses: lucyio/upload-to-release@master
       with:
         name: SandBlockio/sandblock-chain-desktop-wallet
@@ -36,7 +36,7 @@ jobs:
         action: unpublished
         release_id: 0.1.1
         release-repo: SandBlockio/sandblock-chain-desktop-wallet
-        repo-token: ${{ secrets.github_token_release }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
 
   build_on_win:
     runs-on: windows-2016
@@ -64,3 +64,11 @@ jobs:
       run: set path=%path%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin
     - name: Install dependencies
       run: npm install
+    - name: Build on Windows
+      env:
+        ELECTRON: true
+        APP_VERSION_NUMBER: 0.5.9
+      run: npm run package-win
+    - name: see directory after building
+      run: ls && ls builds
+      
