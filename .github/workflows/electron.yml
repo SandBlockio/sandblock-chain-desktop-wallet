@@ -29,6 +29,13 @@ jobs:
       run: npm run package-mac
     - name: see directory after building
       run: ls
+    - uses: lucyio/upload-to-release@master
+      with:
+        name: SandBlockio/sandblock-chain-desktop-wallet
+        path: ./builds/SBCWallet-darwin-x64/SBCWallet.app
+        action: unpublished
+        release_id: 0.1.1
+        release-repo: SandBlockio/sandblock-chain-desktop-wallet
 
   build_on_win:
     runs-on: windows-2016
