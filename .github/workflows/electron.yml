@@ -74,7 +74,7 @@ jobs:
     - name: see directory after building
       run: ls && ls builds && ls builds/SBCWallet-win32-ia32
     - name: create zipball for windows
-      run: zip -r builds/SBCWallet-win32-ia32 builds/sbc-wallet.zip && rm -rf builds/SBCWallet-win32-ia32
+      run: Compress-Archive builds/SBCWallet-win32-ia32 builds/sbc-wallet.zip && rm -rf builds/SBCWallet-win32-ia32
     - uses: lucyio/upload-to-release@master
       with:
         name: SandBlockio/sandblock-chain-desktop-wallet
