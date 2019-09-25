@@ -36,7 +36,7 @@ jobs:
         name: SandBlockio/sandblock-chain-desktop-wallet
         path: ./builds
         action: unpublished
-        release_id: echo "$GITHUB_SHA"
+        release_id: ${{ github.sha }}
         release-repo: SandBlockio/sandblock-chain-desktop-wallet
         repo-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -80,7 +80,7 @@ jobs:
         name: SandBlockio/sandblock-chain-desktop-wallet
         path: ./builds
         action: unpublished
-        release_id: echo "$GITHUB_SHA"
+        release_id: ${{ github.sha }}
         release-repo: SandBlockio/sandblock-chain-desktop-wallet
         repo-token: ${{ secrets.GITHUB_TOKEN }}
       
