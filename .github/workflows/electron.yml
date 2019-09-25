@@ -53,13 +53,13 @@ jobs:
       run: ls
     - name: Install dependencies
       run: npm install
-    - name: Build on MacOS
+    - name: Build on Linux x64
       env:
         ELECTRON: true
         APP_VERSION_NUMBER: 0.5.9
       run: npm run package-linux
     - name: see directory after building
-      run: ls && ls builds
+      run: ls && ls builds/SBCWallet-linux-x64
 
   build_on_win:
     runs-on: windows-2016
@@ -95,7 +95,7 @@ jobs:
     - name: see directory after building
       run: ls && ls builds && ls builds/SBCWallet-win32-ia32
     - name: create zipball for windows
-      run: bestzip builds/sbc-wallet.zip builds/SBCWallet-win32-ia32 && rm -rf builds/SBCWallet-win32-ia32
+      run: bestzip builds/sbc-wallet-windows.zip builds/SBCWallet-win32-ia32 && rm -rf builds/SBCWallet-win32-ia32
     - uses: lucyio/upload-to-release@master
       with:
         name: SandBlockio/sandblock-chain-desktop-wallet
