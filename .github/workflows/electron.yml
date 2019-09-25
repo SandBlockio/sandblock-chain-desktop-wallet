@@ -52,7 +52,7 @@ jobs:
     - name: see directory
       run: ls
     - name: Install dependencies
-      run: npm install
+      run: npm install -g bestzip && npm install
     - name: Build on Linux x64
       env:
         ELECTRON: true
@@ -60,6 +60,16 @@ jobs:
       run: npm run package-linux
     - name: see directory after building
       run: ls && ls builds/SBCWallet-linux-x64
+    - name: create zipball for linux
+      run: bestzip builds/sbc-wallet-linux.zip builds/SBCWallet-linux-x64 && rm -rf builds/SBCWallet-linux-x64
+    - uses: lucyio/upload-to-release@master
+      with:
+        name: SandBlockio/sandblock-chain-desktop-wallet
+        path: ./builds
+        action: unpublished
+        release_id: ${{ github.sha }}
+        release-repo: SandBlockio/sandblock-chain-desktop-wallet
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
 
   build_on_win:
     runs-on: windows-2016
