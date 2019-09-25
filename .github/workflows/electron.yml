@@ -73,4 +73,14 @@ jobs:
       run: npm run package-win
     - name: see directory after building
       run: ls && ls builds && ls builds/SBCWallet-win32-ia32
+    - name: create zipball for windows
+      run: zip -r builds/SBCWallet-win32-ia32 builds/sbc-wallet.zip && rm -rf builds/SBCWallet-win32-ia32
+    - uses: lucyio/upload-to-release@master
+      with:
+        name: SandBlockio/sandblock-chain-desktop-wallet
+        path: ./builds
+        action: unpublished
+        release_id: ${GITHUB_SHA}
+        release-repo: SandBlockio/sandblock-chain-desktop-wallet
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
       
