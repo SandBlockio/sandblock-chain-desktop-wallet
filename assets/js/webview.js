@@ -4,14 +4,14 @@ onload = function() {
   var webview = document.querySelector('webview');
   doLayout();
 
-  // Topbar functions
-  homeButton();
-  printButton();
-
   // Test for the presence of the experimental <webview> zoom and find APIs.
   if (typeof(webview.setZoom) == "function" &&
       typeof(webview.find) == "function") {
   }
+
+  webview.addEventListener('console-message', function(e) {
+    console.log('Guest page logged a message:', e.message);
+  });
 };
 
 function doLayout() {
