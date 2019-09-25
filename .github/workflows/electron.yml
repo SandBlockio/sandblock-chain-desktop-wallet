@@ -40,6 +40,27 @@ jobs:
         release-repo: SandBlockio/sandblock-chain-desktop-wallet
         repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+  build_on_linux:
+    runs-on: ubuntu-16.04
+    steps:
+    - uses: actions/checkout@master
+      with:
+        ref: master
+    - uses: actions/setup-node@master
+      with:
+        node-version: 10.16
+    - name: see directory
+      run: ls
+    - name: Install dependencies
+      run: npm install
+    - name: Build on MacOS
+      env:
+        ELECTRON: true
+        APP_VERSION_NUMBER: 0.5.9
+      run: npm run package-linux
+    - name: see directory after building
+      run: ls && ls builds
+
   build_on_win:
     runs-on: windows-2016
     steps:
