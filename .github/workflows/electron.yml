@@ -36,7 +36,7 @@ jobs:
         name: SandBlockio/sandblock-chain-desktop-wallet
         path: ./builds
         action: unpublished
-        release_id: ${GITHUB_SHA}
+        release_id: echo "$GITHUB_SHA"
         release-repo: SandBlockio/sandblock-chain-desktop-wallet
         repo-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -55,7 +55,7 @@ jobs:
       with:
         node-version: 10.16
     - name: install node tools
-      run: npm install --global --production windows-build-tools@4.0.0
+      run: npm install --global --production windows-build-tools@4.0.0 bestzip
     - name: install node-gyp
       run: npm install --global node-gyp@latest
     - name: Set node config to use python2.7
@@ -74,13 +74,13 @@ jobs:
     - name: see directory after building
       run: ls && ls builds && ls builds/SBCWallet-win32-ia32
     - name: create zipball for windows
-      run: Compress-Archive builds/SBCWallet-win32-ia32 builds/sbc-wallet.zip && rm -rf builds/SBCWallet-win32-ia32
+      run: bestzip builds/sbc-wallet.zip builds/SBCWallet-win32-ia32 && rm -rf builds/SBCWallet-win32-ia32
     - uses: lucyio/upload-to-release@master
       with:
         name: SandBlockio/sandblock-chain-desktop-wallet
         path: ./builds
         action: unpublished
-        release_id: ${GITHUB_SHA}
+        release_id: echo "$GITHUB_SHA"
         release-repo: SandBlockio/sandblock-chain-desktop-wallet
         repo-token: ${{ secrets.GITHUB_TOKEN }}
       
